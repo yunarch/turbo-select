@@ -47,7 +47,9 @@ describe('turbo-select', () => {
           resolve(data);
         }
       });
-      execution.child.on('close', () => resolve(data));
+      execution.child.on('close', () => {
+        resolve(data);
+      });
       setTimeout(() => {
         execution.child.kill();
         resolve(data);
@@ -82,7 +84,9 @@ describe('turbo-select', () => {
           resolve(data);
         }
       });
-      execution.child.on('close', () => resolve(data));
+      execution.child.on('close', () => {
+        resolve(data);
+      });
       setTimeout(() => {
         execution.child.kill();
         resolve(data);
