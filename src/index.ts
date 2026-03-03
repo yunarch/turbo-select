@@ -65,7 +65,7 @@ async function selectEnvironmentMode() {
 }
 
 // Main program execution
-createBaseProgram()
+await createBaseProgram()
   .name('turbo-select')
   .description(
     'A CLI tool to filter and select a single package from the Turborepo package list and run a script command.\nAdditionally, allow to prompt environment mode (development, staging, production), for example, when using Vite.'
