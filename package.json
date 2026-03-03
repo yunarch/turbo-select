@@ -51,7 +51,7 @@
     "format": "oxfmt format --check ./",
     "format:all": "oxfmt format --write ./",
     "clean": "rimraf dist .turbo tests/__fixture__/.turbo",
-    "build": "bun build ./src/index.ts --outdir ./dist --minify --target node --format esm",
+    "build": "bun build ./src/index.ts --outdir ./dist --minify --target node --format esm --external commander --external nano-spawn --external @inquirer/select",
     "test": "bun test",
     "test:watch": "bun test --watch",
     "test:dist": "bun run build && TEST_DIST=true bun test"
