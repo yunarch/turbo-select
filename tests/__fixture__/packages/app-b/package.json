@@ -1,1 +1,8 @@
-{"name":"@test/app-b","version":"1.0.0","scripts":{"dev":"echo dev","build":"echo build"}}
+{
+  "name": "@test/app-b",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "echo dev",
+    "build": "echo build"
+  }
+}
