@@ -8,6 +8,12 @@
       "rules": {
         "no-console": "off"
       }
+    },
+    {
+      "files": ["tests/vitest.globalSetup.ts"],
+      "rules": {
+        "no-await-in-loop": "off"
+      }
     }
   ]
 }

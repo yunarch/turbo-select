@@ -35,16 +35,15 @@ function createBaseProgram() {
  * @returns A promise that resolves to the selected package name.
  */
 async function selectTurboPackages() {
-  const { output } = await spawn('turbo', ['ls']);
-  const packageList = output
-    .split('\n')
-    .slice(1)
-    .map((line) => line.trim())
-    .filter(Boolean)
-    .map((line) => line.split(' ')[0]);
+  const { stdout } = await spawn('turbo', ['ls', '--output=json'], {
+    preferLocal: true,
+  });
+  const { packages } = JSON.parse(stdout.trim()) as {
+    packages: { items: { name: string; path: string }[] };
+  };
   return await select({
     message: 'Select a package to run the script:',
-    choices: packageList.map((opt) => ({ name: opt, value: opt })),
+    choices: packages.items.map((pkg) => pkg.name),
   });
 }
 
@@ -103,9 +102,7 @@ ${styleText('green', '--select-env')}
           ...(filter ? [`--filter=${filter}`] : []),
           ...(environment ? ['--', '--mode', environment] : []),
         ],
-        {
-          stdio: 'inherit',
-        }
+        { preferLocal: true }
       );
     } catch (error) {
       console.error(error);
