@@ -1,0 +1,28 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+env:
+  CI: true
+  DO_NOT_TRACK: 1
+  HUSKY: 0
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📁 Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: 📝 Generate release notes
+        run: bunx changelogithub
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
