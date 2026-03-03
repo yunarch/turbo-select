@@ -79,6 +79,6 @@ function createCliExecutor(cli: string) {
 const testDist = process.env.TEST_DIST === 'true';
 export const resolve = createRelativeResolver(import.meta.url);
 export const cliExecutor = createCliExecutor(
-  resolve(testDist ? '../dist/index.js' : '../src/index.ts')
+  resolve(testDist ? './dist/index.js' : './src/index.ts')
 );
-export const TMP_PROJECT_DIR = resolve('__fixture__');
+export const TMP_PROJECT_DIR = resolve('tests/__fixture__');

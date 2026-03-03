@@ -10,7 +10,7 @@
       }
     },
     {
-      "files": ["tests/vitest.globalSetup.ts"],
+      "files": ["test-setup.ts"],
       "rules": {
         "no-await-in-loop": "off"
       }

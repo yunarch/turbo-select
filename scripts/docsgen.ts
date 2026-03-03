@@ -15,7 +15,7 @@ const { stdout } = await spawn('bun', ['src/index.ts', '--help'], {
 });
 
 const helpText = stdout.trim();
-const newUsageBlock = `${START_MARKER}\n\`\`\`\n${helpText}\n\`\`\`\n${END_MARKER}`;
+const newUsageBlock = `${START_MARKER}\n\n\`\`\`\n${helpText}\n\`\`\`\n\n${END_MARKER}`;
 
 // Read the current README and replace between markers
 const readme = readFileSync(README_PATH, 'utf8');

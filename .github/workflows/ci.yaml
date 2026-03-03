@@ -38,7 +38,7 @@ jobs:
       - name: 📦 Install dependencies
         run: bun install --frozen-lockfile
       - name: 🧪 Test files
-        run: bun run tests
+        run: bun run test
   build_test:
     name: Build testing
     runs-on: ubuntu-latest
