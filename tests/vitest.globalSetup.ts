@@ -1,7 +1,7 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import packageJSON from '../package.json' assert { type: 'json' };
-import { TMP_PROJECT_DIR } from './test-utils';
+import { asyncExecFile, TMP_PROJECT_DIR } from './test-utils';
 
 const PACKAGES = [
   { name: '@test/app-a', scripts: { dev: 'echo dev', build: 'echo build' } },
@@ -45,4 +45,5 @@ export async function setup() {
       })
     );
   }
+  await asyncExecFile('bun', ['run', 'format:all', 'tests/__fixture__']);
 }

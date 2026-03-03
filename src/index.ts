@@ -67,15 +67,15 @@ async function selectEnvironmentMode() {
 await createBaseProgram()
   .name('turbo-select')
   .description(
-    'A CLI tool to filter and select a single package from the Turborepo package list and run a script command.\nAdditionally, allow to prompt environment mode (development, staging, production), for example, when using Vite.'
+    'A CLI tool to filter and select packages from the Turborepo package list and run a script command.\nAdditionally, allow to prompt environment mode (development, staging, production), for example, when using Vite.'
   )
   .requiredOption(
     '--run <script>',
-    'The package script command to execute (e.g., --run=dev).'
+    'The package script command to execute (e.g., --run dev).'
   )
   .option(
-    '--select-env',
-    'An environment mode (development, staging, production) If using for example vite.'
+    '--env-mode',
+    'If should prompt to select environment mode (development, staging, production) to load different env files (e.g., .env.development, .env.staging, .env.production) when using Vite.'
   )
   .addHelpText(
     'after',
@@ -84,14 +84,14 @@ Example usage:
 ${styleText('dim', '$')} \
 ${styleText('cyan', 'turbo-select')} \
 ${styleText('green', '--run')} ${styleText('yellow', 'dev')} \
-${styleText('green', '--select-env')}
+${styleText('green', '--env-mode')}
 `
   )
-  .action(async ({ run, selectEnv }: { run: string; selectEnv?: boolean }) => {
+  .action(async ({ run, envMode }: { run: string; envMode?: boolean }) => {
     try {
       console.log(styleText('magenta', '\n🚀 Turbo-Select\n'));
       const filter = await selectTurboPackages();
-      const environment = selectEnv ? await selectEnvironmentMode() : undefined;
+      const environment = envMode ? await selectEnvironmentMode() : undefined;
       await spawn(
         'turbo',
         [

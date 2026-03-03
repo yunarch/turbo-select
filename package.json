@@ -43,7 +43,8 @@
     "access": "public"
   },
   "scripts": {
-    "prepare": "husky",
+    "prepare": "husky && gen",
+    "gen": "bun run ./scripts/docsgen.ts",
     "lint": "bun run --parallel lint:code lint:ts",
     "lint:code": "oxlint --type-aware",
     "lint:ts": "tsc --noEmit",

@@ -6,7 +6,7 @@ describe('turbo-select', () => {
     const { stdout } = await cliExecutor(['--help']);
     expect(stdout).toContain('Usage: turbo-select [options]');
     expect(stdout).toContain('--run <script>');
-    expect(stdout).toContain('--select-env');
+    expect(stdout).toContain('--env-mode');
     expect(stdout).toContain('display help for command');
     expect(stdout).toContain('Example usage:');
   });
@@ -61,7 +61,7 @@ describe('turbo-select', () => {
   }, 10_000);
 
   it('should prompt environment to select', async () => {
-    const execution = cliExecutor(['--run', 'dev', '--select-env'], {
+    const execution = cliExecutor(['--run', 'dev', '--env-mode'], {
       cwd: TMP_PROJECT_DIR,
       encoding: 'utf8',
     });

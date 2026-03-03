@@ -17,7 +17,7 @@ const promisifiedExecFile = promisify(execFile);
  * @param options - Options for child_process.execFile.
  * @returns A promise that resolves with the command's stdout and stderr.
  */
-function asyncExecFile(
+export function asyncExecFile(
   file: string,
   args: string[] | undefined | null,
   options: ExecFileOptionsWithStringEncoding = {}
