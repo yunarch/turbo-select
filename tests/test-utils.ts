@@ -7,6 +7,30 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 
+const promisifiedExecFile = promisify(execFile);
+
+/**
+ * Executes a command as a child process and returns a promise that resolves with the command's output.
+ *
+ * @param file - The command to run.
+ * @param args - List of string arguments.
+ * @param options - Options for child_process.execFile.
+ * @returns A promise that resolves with the command's stdout and stderr.
+ */
+function asyncExecFile(
+  file: string,
+  args: string[] | undefined | null,
+  options: ExecFileOptionsWithStringEncoding = {}
+): PromiseWithChild<{
+  stdout: string;
+  stderr: string;
+}> {
+  if (options.shell) {
+    return promisifiedExecFile([file, ...(args ?? [])].join(' '), options);
+  }
+  return promisifiedExecFile(file, args, options);
+}
+
 /**
  * Creates a function that resolves relative paths based on a given module URL.
  *
@@ -41,39 +65,20 @@ function createRelativeResolver(metaUrl: string) {
  * ```
  */
 function createCliExecutor(cli: string) {
-  return async (params: string[] = []) => {
-    return asyncExecFile('bun', ['run', cli, ...params], { shell: true });
-  };
+  return (
+    params: string[] = [],
+    options: ExecFileOptionsWithStringEncoding = {}
+  ) =>
+    asyncExecFile('bun', ['run', cli, ...params], {
+      shell: true,
+      ...options,
+    });
 }
 
 // Constants
 const testDist = process.env.TEST_DIST === 'true';
-const promisifiedExecFile = promisify(execFile);
 export const resolve = createRelativeResolver(import.meta.url);
 export const cliExecutor = createCliExecutor(
-  resolve(testDist ? '../.dist/index.js' : '../src/index.ts')
+  resolve(testDist ? '../dist/index.js' : '../src/index.ts')
 );
-export const TMP_DIR = resolve('../tmp');
-export const TMP_PROJECT_DIR = path.join(TMP_DIR, 'mock-turbo-project');
-
-/**
- * Executes a command as a child process and returns a promise that resolves with the command's output.
- *
- * @param file - The command to run.
- * @param args - List of string arguments.
- * @param options - Options for child_process.execFile.
- * @returns A promise that resolves with the command's stdout and stderr.
- */
-export function asyncExecFile(
-  file: string,
-  args: string[] | undefined | null,
-  options: ExecFileOptionsWithStringEncoding = {}
-): PromiseWithChild<{
-  stdout: string;
-  stderr: string;
-}> {
-  if (options.shell) {
-    return promisifiedExecFile([file, ...(args ?? [])].join(' '), options);
-  }
-  return promisifiedExecFile(file, args, options);
-}
+export const TMP_PROJECT_DIR = resolve('__fixture__');

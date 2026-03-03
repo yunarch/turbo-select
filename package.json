@@ -49,11 +49,11 @@
     "lint:ts": "tsc --noEmit",
     "format": "oxfmt format --check ./",
     "format:all": "oxfmt format --write ./",
-    "clean": "rimraf dist",
-    "build": "bun build ./src/index.ts --outdir ./dist --minify --target node --format esm --external @inquirer/select",
+    "clean": "rimraf dist .turbo tests/__fixture__/.turbo",
+    "build": "bun build ./src/index.ts --outdir ./dist --minify --target node --format esm",
     "tests": "vitest --typecheck run",
     "tests:watch": "vitest --typecheck watch",
-    "tests:dist": "bun run build && TEST_DIST=true bun run tests"
+    "tests:dist": "bun run build && TEST_DIST=true bun tests"
   },
   "peerDependencies": {
     "turbo": ">=2.0.8"

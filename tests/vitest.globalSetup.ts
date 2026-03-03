@@ -1,7 +1,7 @@
-import { rm, mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import packageJSON from '../package.json' assert { type: 'json' };
-import { asyncExecFile, TMP_DIR, TMP_PROJECT_DIR } from './test-utils';
+import { TMP_PROJECT_DIR } from './test-utils';
 
 const PACKAGES = [
   { name: '@test/app-a', scripts: { dev: 'echo dev', build: 'echo build' } },
@@ -13,8 +13,6 @@ const PACKAGES = [
  * Setup function to run before tests.
  */
 export async function setup() {
-  await rm(TMP_PROJECT_DIR, { recursive: true, force: true });
-  await mkdir(TMP_PROJECT_DIR, { recursive: true });
   await writeFile(
     path.join(TMP_PROJECT_DIR, 'package.json'),
     JSON.stringify({
@@ -27,7 +25,7 @@ export async function setup() {
   await writeFile(
     path.join(TMP_PROJECT_DIR, 'turbo.json'),
     JSON.stringify({
-      $schema: 'https://turbo.build/schema.json',
+      $schema: 'https://turborepo.dev/schema.json',
       tasks: {
         dev: {},
         build: { outputs: ['dist/**'] },
@@ -47,12 +45,4 @@ export async function setup() {
       })
     );
   }
-  await asyncExecFile('bun', ['install'], { cwd: TMP_PROJECT_DIR });
-}
-
-/**
- * Teardown function to run after tests.
- */
-export async function teardown() {
-  await rm(TMP_DIR, { recursive: true, force: true });
 }

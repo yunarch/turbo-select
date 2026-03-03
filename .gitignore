@@ -87,6 +87,3 @@ build
 
 # MSW
 mockServiceWorker.js
-
-# Others
-tmp
