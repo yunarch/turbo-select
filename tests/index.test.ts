@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'bun:test';
 import { cliExecutor, TMP_PROJECT_DIR } from '../test-utils';
 
 describe('turbo-select', () => {
@@ -11,26 +11,26 @@ describe('turbo-select', () => {
     expect(stdout).toContain('Example usage:');
   });
 
-  it('should fail and throw an error with missing required options', async () => {
-    await expect(cliExecutor()).rejects.toThrow(
+  it('should fail and throw an error with missing required options', () => {
+    expect(cliExecutor()).rejects.toThrow(
       "error: required option '--run <script>' not specified"
     );
   });
 
-  it('should throw an error when --run is provided without a value', async () => {
-    await expect(cliExecutor(['--run'])).rejects.toThrow(
+  it('should throw an error when --run is provided without a value', () => {
+    expect(cliExecutor(['--run'])).rejects.toThrow(
       "error: option '--run <script>' argument missing"
     );
   });
 
-  it('should throw an error for unknown options', async () => {
-    await expect(cliExecutor(['--run', 'dev', '--unknown'])).rejects.toThrow(
+  it('should throw an error for unknown options', () => {
+    expect(cliExecutor(['--run', 'dev', '--unknown'])).rejects.toThrow(
       "error: unknown option '--unknown'"
     );
   });
 
-  it('should fail when turbo ls cannot find a turbo project', async () => {
-    await expect(cliExecutor(['--run', 'dev'])).rejects.toThrow();
+  it('should fail when turbo ls cannot find a turbo project', () => {
+    expect(cliExecutor(['--run', 'dev'])).rejects.toThrow();
   });
 
   it('should prompt packages to select', async () => {
