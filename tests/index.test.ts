@@ -58,7 +58,7 @@ describe('turbo-select', () => {
     expect(stdout).toContain('@test/app-a');
     expect(stdout).toContain('@test/app-b');
     expect(stdout).toContain('@test/lib-shared');
-  }, 10_000);
+  });
 
   it('should prompt environment to select', async () => {
     const execution = cliExecutor(['--run', 'dev', '--env-mode'], {
@@ -92,5 +92,5 @@ describe('turbo-select', () => {
     expect(stdout).toContain('development');
     expect(stdout).toContain('staging');
     expect(stdout).toContain('production');
-  }, 10_000);
+  });
 });
