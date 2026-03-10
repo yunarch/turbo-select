@@ -4,6 +4,9 @@ A CLI tool to filter and select packages from the Turborepo package list and run
 
 Additionally, allow to prompt environment mode (development, staging, production), for example, when using Vite.
 
+> [!NOTE]
+> CLI extracted from https://github.com/yunarch/config-web. keeping it around in case someone still finds it useful.
+
 ## Usage
 
 <!-- [docsgen]: start -->
