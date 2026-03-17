@@ -1,6 +1,6 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import packageJSON from './package.json' assert { type: 'json' };
+import packageJSON from './package.json';
 import { asyncExecFile, TMP_PROJECT_DIR } from './test-utils';
 
 const PACKAGES = [

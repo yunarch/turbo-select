@@ -2,6 +2,11 @@
   "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/main/npm/oxlint/configuration_schema.json",
   "extends": ["./node_modules/@yunarch/config-web/dist/config.oxlint.json"],
   "categories": { "correctness": "error", "perf": "error" },
+  "options": {
+    "typeAware": true,
+    "typeCheck": true,
+    "reportUnusedDisableDirectives": "warn"
+  },
   "overrides": [
     {
       "files": ["src/index.ts"],
