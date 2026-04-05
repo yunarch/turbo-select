@@ -7,7 +7,7 @@
       "dependencies": {
         "@inquirer/select": "5.1.2",
         "commander": "14.0.3",
-        "nano-spawn": "2.0.0",
+        "nano-spawn": "2.1.0",
       },
       "devDependencies": {
         "@types/bun": "1.3.11",
@@ -551,7 +551,7 @@
 
     "mute-stream": ["mute-stream@3.0.0", "", {}, "sha512-dkEJPVvun4FryqBmZ5KhDo0K9iDXAwn08tMLDinNdRBNPcYEDiWYysLcc6k3mjTMlbP9KyylvRpd4wFtwrT9rw=="],
 
-    "nano-spawn": ["nano-spawn@2.0.0", "", {}, "sha512-tacvGzUY5o2D8CBh2rrwxyNojUsZNU2zjNTzKQrkgGJQTbGAfArVWXSKMBokBeeg6C7OLRGUEyoFlYbfeWQIqw=="],
+    "nano-spawn": ["nano-spawn@2.1.0", "", {}, "sha512-yTW+2okrElHiH4fsiz/+/zc0EDo9BDDoC3iKk8dpv1GeRc9nUWzUZHx6TofMWErchhUQR8hY9/Eu1Uja9x1nqA=="],
 
     "napi-postinstall": ["napi-postinstall@0.3.4", "", { "bin": { "napi-postinstall": "lib/cli.js" } }, "sha512-PHI5f1O0EP5xJ9gQmFGMS6IZcrVvTjpXjz7Na41gTE7eE2hK11lg04CECCYEEjdc17EV4DO+fkGEtt7TpTaTiQ=="],
 
