@@ -12,7 +12,7 @@ Additionally, allow to prompt environment mode (development, staging, production
 <!-- [docsgen]: start -->
 
 ```
-Usage: turbo-select [options]
+Usage: @yunarch/turbo-select [options]
 
 A CLI tool to filter and select packages from the Turborepo package list and run
 a script command.
@@ -28,7 +28,7 @@ Options:
   -h, --help      display help for command
 
 Example usage:
-$ turbo-select --run dev --env-mode
+$ @yunarch/turbo-select --run dev --env-mode
 ```
 
 <!-- [docsgen]: end -->
