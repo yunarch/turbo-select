@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'bun:test';
 import { cliExecutor, TMP_PROJECT_DIR } from '../test-utils';
 
-describe('turbo-select', () => {
+describe('CLI @yunarch/turbo-select', () => {
   it('should display help information with --help flag', async () => {
     const { stdout } = await cliExecutor(['--help']);
-    expect(stdout).toContain('Usage: turbo-select [options]');
+    expect(stdout).toContain('Usage: @yunarch/turbo-select [options]');
     expect(stdout).toContain('--run <script>');
     expect(stdout).toContain('--env-mode');
     expect(stdout).toContain('display help for command');
