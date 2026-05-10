@@ -67,7 +67,7 @@
     "@inquirer/select": "5.1.4"
   },
   "devDependencies": {
-    "@yunarch/config-web": "0.8.0",
+    "@yunarch/config-web": "0.9.1",
     "oxfmt": "0.47.0",
     "oxlint": "1.62.0",
     "oxlint-tsgolint": "0.22.1",
