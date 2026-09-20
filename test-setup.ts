@@ -1,3 +1,4 @@
+// oxlint-disable no-await-in-loop
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import packageJSON from './package.json';
